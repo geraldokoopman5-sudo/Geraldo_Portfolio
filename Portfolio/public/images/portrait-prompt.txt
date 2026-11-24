@@ -1,0 +1,11 @@
+﻿Use case: photorealistic-natural.
+Asset type: transparent PNG cutout portrait for a developer portfolio hero.
+Create an original fictional male model in his late twenties with medium brown skin, short dark curly hair, subtle stubble, wearing an understated charcoal black crewneck long sleeve sweater.
+Relaxed standing pose, shoulders slightly turned, facing camera, natural quietly confident expression with slight smile, hands loosely together near waist.
+Frame from top of head to upper thighs, entire head and shoulders and arms inside image, portrait 2:3 composition.
+Beautiful soft editorial studio lighting, realistic fabric texture, gently desaturated photography.
+Genuinely transparent background, no background, no ground, no props, no text, no logos.
+This is an explicitly fictional placeholder, not a likeness of any existing person.
+Save output as a local generated image file.
+
+Generated with the built-in image_gen tool. Output is portrait.png in this directory.
