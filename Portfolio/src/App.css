@@ -90,3 +90,16 @@
 .circle-button:hover::before { background: var(--funkie-friday); }
 .circle-button.accent:hover::before { background: var(--moonscape); }
 @media (max-width:700px) { .header nav { background: var(--back-in-black); } }
+
+/* Show the contact details directly, with clear, comfortable link targets. */
+.contact-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.contact-links > a, .contact-links > .placeholder-link { display: flex; flex-direction: column; justify-content: center; gap: 12px; min-width: 0; min-height: 110px; padding: 22px 24px; border: 1px solid var(--moonscape); border-radius: 8px; background: #ffffff08; color: var(--mountain-heather); font-size: 1rem; }
+.contact-links > a { transition: background .2s, border-color .2s; }
+.contact-links > a:hover, .contact-links > a:focus-visible { background: #ffffff12; border-color: var(--mountain-heather); }
+.contact-links .destination-detail { font-size: clamp(1rem, 1.7vw, 1.25rem); font-weight: 500; line-height: 1.5; overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: 5px; }
+.contact-links > .placeholder-link > span { color: var(--decanting); font-size: 1rem; }
+@media (max-width:700px) {
+  .contact-links { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .contact-links > a, .contact-links > .placeholder-link { padding: 20px; min-height: 100px; }
+  .contact-details > p:first-child { max-width: none; }
+}
