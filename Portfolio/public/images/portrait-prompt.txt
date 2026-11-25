@@ -1,11 +1,5 @@
-﻿Use case: photorealistic-natural.
-Asset type: transparent PNG cutout portrait for a developer portfolio hero.
-Create an original fictional male model in his late twenties with medium brown skin, short dark curly hair, subtle stubble, wearing an understated charcoal black crewneck long sleeve sweater.
-Relaxed standing pose, shoulders slightly turned, facing camera, natural quietly confident expression with slight smile, hands loosely together near waist.
-Frame from top of head to upper thighs, entire head and shoulders and arms inside image, portrait 2:3 composition.
-Beautiful soft editorial studio lighting, realistic fabric texture, gently desaturated photography.
-Genuinely transparent background, no background, no ground, no props, no text, no logos.
-This is an explicitly fictional placeholder, not a likeness of any existing person.
-Save output as a local generated image file.
+﻿Edited from the user-supplied photo with the built-in image_gen tool.
+Transparent background: true. Output: portrait.png in this directory.
 
-Generated with the built-in image_gen tool. Output is portrait.png in this directory.
+Final prompt:
+Use case: background-extraction. Edit target: the uploaded full-body photograph of the man wearing a black jacket, black T-shirt, ripped black jeans and black-and-white sneakers, standing with both hands holding his jacket. Asset type: transparent portrait cutout for his personal portfolio website. Remove the entire room, furniture, ceiling, walls and floor. Output the same person isolated on a genuinely transparent background with an alpha channel, no backdrop, no checkerboard baked into pixels. Preserve his identity, facial features and expression, hairstyle, skin tone, exact pose, body proportions, clothing, jewelry and shoes. Keep natural photographic texture and original lighting. Do not beautify, restyle, redraw, change clothes, add objects or text, or change his face. Retain complete hair and both shoes with clean natural edges, with a small transparent margin around the whole subject.
