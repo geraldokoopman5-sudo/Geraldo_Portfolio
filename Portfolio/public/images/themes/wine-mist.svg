@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="800" viewBox="0 0 640 800">
+<rect width="640" height="800" rx="24" fill="#FFFFFF"/>
+<path d="M24 0h592a24 24 0 0 1 24 24v410H0V24A24 24 0 0 1 24 0" fill="#66386A"/>
+<g fill="#FFFFFF" font-family="Georgia,serif">
+<text x="40" y="65" font-size="38">gk.</text>
+<text x="405" y="57" font-size="16">Work</text><text x="475" y="57" font-size="16">About</text><text x="550" y="57" font-size="16">Contact</text>
+<text x="40" y="145" font-size="17">Independent thinking.</text>
+<text x="36" y="270" font-size="78" letter-spacing="-3">Geraldo</text><text x="36" y="355" font-size="78" letter-spacing="-3">Koopman</text>
+<text x="40" y="407" font-size="17">Software Developer</text>
+</g>
+<g fill="#000000" font-family="Georgia,serif">
+<text x="40" y="507" font-size="37">Wine &amp; Mist</text>
+<text x="40" y="549" font-size="18">5 colours. A different perspective.</text>
+<path d="M40 580h560" stroke="#80013F"/>
+<circle cx="53" cy="620" r="13" fill="#000000" stroke="#000000" stroke-width="1"/><text x="73" y="625" font-size="15">Black</text><text x="73" y="649" font-size="14">#000000</text>
+<circle cx="248" cy="620" r="13" fill="#66386A" stroke="#000000" stroke-width="1"/><text x="268" y="625" font-size="15">Plum</text><text x="268" y="649" font-size="14">#66386A</text>
+<circle cx="443" cy="620" r="13" fill="#80013F" stroke="#000000" stroke-width="1"/><text x="463" y="625" font-size="15">Wine</text><text x="463" y="649" font-size="14">#80013F</text>
+<circle cx="53" cy="700" r="13" fill="#D1D1D1" stroke="#000000" stroke-width="1"/><text x="73" y="705" font-size="15">Mist</text><text x="73" y="729" font-size="14">#D1D1D1 *</text>
+<circle cx="248" cy="700" r="13" fill="#FFFFFF" stroke="#000000" stroke-width="1"/><text x="268" y="705" font-size="15">White</text><text x="268" y="729" font-size="14">#FFFFFF</text>
+</g></svg>

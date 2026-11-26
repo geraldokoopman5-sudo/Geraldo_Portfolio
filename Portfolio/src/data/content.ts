@@ -38,7 +38,7 @@ export const portfolio = {
   edition: '2026',
   portrait: {
     src: '/images/portrait.png',
-    alt: 'Portrait of Geraldo Koopman wearing a black jacket, with the background removed',
+    alt: 'Portrait of Geraldo Koopman wearing glasses and a dark blue coat, with the background removed',
     caption: 'Geraldo Koopman · Software Developer',
   },
   introduction: 'I turn ideas into practical digital experiences.',
@@ -64,7 +64,7 @@ export const portfolio = {
     { label: 'Email', detail: 'geraldokoopman5@gmail.com', href: 'mailto:geraldokoopman5@gmail.com' },
     { label: 'GitHub', detail: 'geraldokoopman5-sudo', href: 'https://github.com/geraldokoopman5-sudo' },
     { label: 'LinkedIn', detail: 'Geraldo Koopman', href: 'https://www.linkedin.com/in/geraldo-koopman-53b0363a9/' },
-    { label: 'Download CV', detail: 'Coming soon', href: null as string | null },
+    { label: 'Download CV', detail: 'PDF document', href: '/documents/Geraldo-Koopman-CV.pdf', download: 'Geraldo-Koopman-CV.pdf' },
   ],
 }
 

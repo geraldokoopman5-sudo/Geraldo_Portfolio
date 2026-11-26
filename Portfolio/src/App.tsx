@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import type { CSSProperties, MouseEvent, ReactNode } from 'react'
 import { portfolio, projects, technologyColors } from './data/content'
 import type { Project } from './data/content'
+import ThemeSelector from './components/ThemeSelector'
+import { applyTheme, readSavedTheme } from './data/themes'
 import './App.css'
 
 function Lines({ lines }: { lines: string[] }) {
@@ -35,7 +37,7 @@ function CircleLink({ href, children, accent = false }: { href: string; children
   return <Magnetic><a className={`circle-button ${accent ? 'accent' : ''}`} href={href}><span>{children}</span></a></Magnetic>
 }
 
-function Navigation() {
+function Navigation({ onOpenThemes }: { onOpenThemes: () => void }) {
   const [open, setOpen] = useState(false)
   const menuButton = useRef<HTMLButtonElement>(null)
   const navRef = useRef<HTMLElement>(null)
@@ -53,15 +55,19 @@ function Navigation() {
     <button ref={menuButton} className={`menu-toggle ${open ? 'is-open' : ''}`} aria-expanded={open} aria-controls="main-navigation" onClick={() => setOpen(!open)}><span>{open ? 'Close' : 'Menu'}</span><i aria-hidden="true" /></button>
     <nav ref={navRef} id="main-navigation" aria-label="Main navigation" className={open ? 'is-open' : ''}>
       {['Work', 'About', 'Contact'].map(item => <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setOpen(false)}>{item}</a>)}
+      <button className="theme-trigger" aria-haspopup="dialog" onClick={() => { setOpen(false); onOpenThemes() }}>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2" /><rect x="14" y="3" width="7" height="7" rx="2" /><rect x="3" y="14" width="7" height="7" rx="2" /><rect x="14" y="14" width="7" height="7" rx="2" /></svg>
+        Themes
+      </button>
       <span className="menu-caption">{portfolio.location.city}, {portfolio.location.country}</span>
     </nav>
   </header>
 }
 
-function Hero() {
+function Hero({ onOpenThemes }: { onOpenThemes: () => void }) {
   const [paused, setPaused] = useState(false)
   return <section className="hero" id="home" aria-label={`${portfolio.name}, ${portfolio.role}`}>
-    <Navigation />
+    <Navigation onOpenThemes={onOpenThemes} />
     <div className="hero-topline"><span><Lines lines={portfolio.copy.heroTagline} /></span><span>Portfolio / {portfolio.edition}</span></div>
     <div className="portrait-wrap"><SafeImage src={portfolio.portrait.src} alt={portfolio.portrait.alt} className="hero-portrait" eager portrait /></div>
     <div className="location-badge"><span>Based in {portfolio.location.city},<br />{portfolio.location.country}.</span><Globe /></div>
@@ -107,8 +113,8 @@ function About() {
   return <section id="about" className="about section-shell"><div className="about-heading reveal"><span className="section-label">{portfolio.copy.aboutLabel}</span><Globe /><h2><Lines lines={portfolio.copy.aboutHeading} /></h2></div><div className="about-content reveal"><div><span className="section-label">About {portfolio.name.split(' ')[0]}</span><p className="bio">{portfolio.biography}</p></div><div className="tech-block"><span className="section-label">{portfolio.copy.technologiesLabel}</span><ul>{portfolio.technologies.map(tech => <li key={tech} style={{ '--tech-accent': technologyColors[tech]?.accent ?? 'var(--accent)', '--tech-text': technologyColors[tech]?.text ?? 'var(--accent)' } as CSSProperties}>{tech}</li>)}</ul></div></div></section>
 }
 
-function Destination({ label, href, detail }: { label: string; href: string | null; detail?: string }) {
-  return href ? <a href={href} target={href.startsWith('mailto:') ? undefined : '_blank'} rel="noreferrer"><span>{label}</span>{detail && <span className="destination-detail">{detail}</span>}</a> : <span className="placeholder-link" aria-disabled="true">{label}<span>{detail ?? 'To be added'}</span></span>
+function Destination({ label, href, detail, download }: { label: string; href: string | null; detail?: string; download?: string }) {
+  return href ? <a href={href} download={download} target={download || href.startsWith('mailto:') ? undefined : '_blank'} rel="noreferrer"><span>{label}</span>{detail && <span className="destination-detail">{detail}</span>}</a> : <span className="placeholder-link" aria-disabled="true">{label}<span>{detail ?? 'To be added'}</span></span>
 }
 
 function LiveProjectLink({ href, compact = false }: { href: string; compact?: boolean }) {
@@ -150,6 +156,9 @@ function ProjectPanel({ project, onClose, onNext }: { project: Project | null; o
 
 function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [themeSelectorOpen, setThemeSelectorOpen] = useState(false)
+  const [themeId, setThemeId] = useState(readSavedTheme)
+  useLayoutEffect(() => { applyTheme(themeId) }, [themeId])
   useEffect(() => {
     const elements = document.querySelectorAll('.reveal')
     if (!('IntersectionObserver' in window)) return
@@ -157,7 +166,7 @@ function App() {
     elements.forEach(element => { element.classList.add('will-reveal'); observer.observe(element) })
     return () => observer.disconnect()
   }, [])
-  return <><a className="skip-link" href="#work">Skip to selected work</a><main><Hero /><Introduction /><SelectedWork onSelect={setSelectedProject} /><About /></main><Contact /><ProjectPanel project={selectedProject} onClose={() => setSelectedProject(null)} onNext={setSelectedProject} /></>
+  return <><a className="skip-link" href="#work">Skip to selected work</a><main><Hero onOpenThemes={() => setThemeSelectorOpen(true)} /><Introduction /><SelectedWork onSelect={setSelectedProject} /><About /></main><Contact /><ProjectPanel project={selectedProject} onClose={() => setSelectedProject(null)} onNext={setSelectedProject} />{themeSelectorOpen && <ThemeSelector currentThemeId={themeId} onApply={setThemeId} onClose={() => setThemeSelectorOpen(false)} />}</>
 }
 
 export default App

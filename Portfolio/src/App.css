@@ -103,3 +103,19 @@
   .contact-links > a, .contact-links > .placeholder-link { padding: 20px; min-height: 100px; }
   .contact-details > p:first-child { max-width: none; }
 }
+
+/* Shared surface roles keep each palette readable throughout the portfolio. */
+.hero, .hero-role, .name-marquee, .static-name, .hero-bottom { color: var(--on-hero); }
+.location-badge svg { stroke: var(--on-mid); }
+.section-label, .project-title p, .project-year, .work-heading > p span,
+.work-columns, .work-note, .placeholder-note, .panel-heading > span,
+.panel-content p { color: var(--on-light-muted); }
+.contact .section-label, .contact-top, .contact-details > p:first-child,
+.footer-bottom, .contact-placeholder, .contact-links > .placeholder-link > span { color: var(--on-dark-muted); }
+.contact .circle-button.accent { background: var(--soft-surface); color: var(--on-soft); }
+.next-project { background: var(--soft-surface); color: var(--on-soft); }
+.project-dialog::backdrop { background: color-mix(in srgb, var(--back-in-black) 70%, transparent); }
+.live-link-badge { border-color: color-mix(in srgb, currentColor 40%, transparent); }
+.live-project-link.is-compact:hover { background: color-mix(in srgb, var(--funkie-friday) 5%, transparent); }
+.contact-links > a, .contact-links > .placeholder-link { background: color-mix(in srgb, var(--mountain-heather) 4%, transparent); border-color: var(--dark-border); }
+.contact-links > a:hover, .contact-links > a:focus-visible { background: color-mix(in srgb, var(--mountain-heather) 8%, transparent); }

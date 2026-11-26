@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Runtime';
+  src: url('/fonts/Runtime-Regular.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   /* Geraldo's portfolio palette. Technology hover colours stay brand-specific. */
   --back-in-black: #1B151F;
@@ -12,7 +20,14 @@
   --accent-hover: var(--back-in-black);
   --line: var(--decanting);
   --hero: var(--funkie-friday);
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  --on-hero: var(--mountain-heather);
+  --on-dark-muted: var(--decanting);
+  --on-soft: var(--back-in-black);
+  --soft-surface: var(--decanting);
+  --on-light-muted: var(--funkie-friday);
+  --dark-border: var(--moonscape);
+  --on-mid: var(--mountain-heather);
+  font-family: 'Runtime', Georgia, 'Times New Roman', serif;
   color: var(--ink);
   background: var(--paper);
   font-synthesis: none;
