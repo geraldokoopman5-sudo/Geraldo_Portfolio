@@ -7,7 +7,7 @@ import { applyTheme, contrastRatio, getTheme, readSavedTheme, themes, themeVaria
 
 assert.equal(themes.length, 6, 'Original plus five new palettes')
 assert.equal(new Set(themes.map(theme => theme.id)).size, 6, 'Each palette has a stable unique ID')
-assert.deepEqual(themes.map(theme => theme.colours.length), [5, 5, 5, 5, 6, 5], 'Keep all six colours in Cedar & Hearth')
+assert.deepEqual(themes.map(theme => theme.colours.length), [5, 5, 5, 6, 6, 5], 'Keep all six colours in Dynamite & Stout and Cedar & Hearth')
 assert.ok(themes.every(theme => theme.available), 'Every named palette is selectable')
 
 const styles = new Map()
@@ -46,6 +46,11 @@ for (const theme of themes) {
   assert.equal(readSavedTheme(), theme.id, 'Reload restores the chosen palette')
 }
 
+storage.set(THEME_STORAGE_KEY, 'blue-hour')
+assert.equal(readSavedTheme(), 'dynamite-stout', 'Saved Blue Hour selections use the replacement palette')
+applyTheme(readSavedTheme())
+assert.equal(storage.get(THEME_STORAGE_KEY), 'dynamite-stout', 'Applying migrates the saved theme ID')
+
 storage.set(THEME_STORAGE_KEY, 'missing-theme')
 assert.equal(readSavedTheme(), 'original', 'Invalid saved themes recover to Original')
 assert.equal(getTheme(null).id, 'original')
@@ -53,7 +58,7 @@ window.localStorage.getItem = () => { throw new Error('Storage blocked') }
 window.localStorage.setItem = () => { throw new Error('Storage blocked') }
 assert.equal(readSavedTheme(), 'original', 'Blocked storage does not break startup')
 assert.doesNotThrow(() => applyTheme('blue-hour'), 'Themes still apply with storage blocked')
-assert.equal(document.documentElement.dataset.theme, 'blue-hour')
+assert.equal(document.documentElement.dataset.theme, 'dynamite-stout')
 delete globalThis.window
 delete globalThis.document
 

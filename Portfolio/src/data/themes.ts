@@ -15,8 +15,8 @@ export interface PortfolioTheme {
 }
 
 // Named matches: https://github.com/meodai/color-names
-// Mist, Dusk Blue and Deep Navy are explicit approximations because those
-// names have no unique match in that reference. Values remain editable here.
+// Mist is an explicit approximation because that name has no unique match
+// in that reference. Values remain editable here.
 // "river stix" and "amber autum" are normalised to River Styx and Amber Autumn.
 export const themes: PortfolioTheme[] = [
   {
@@ -129,42 +129,45 @@ export const themes: PortfolioTheme[] = [
     "preview": "/images/themes/amber-timber.svg"
   },
   {
-    "id": "blue-hour",
-    "name": "Blue Hour",
-    "description": "A cool sweep from icy blue and cornflower through Persian blue to deep navy.",
+    "id": "dynamite-stout",
+    "name": "Dynamite & Stout",
+    "description": "Dynamite red and deep stout, layered with rich reds, mimolette orange and golden artichoke heart.",
     "colours": [
       {
-        "name": "Icy Blue",
-        "hex": "#CCEDEA"
+        "name": "Dynamite Red",
+        "hex": "#DD3311"
       },
       {
-        "name": "Cornflower Blue",
-        "hex": "#6C91C5"
+        "name": "Stout",
+        "hex": "#0F0B0A"
       },
       {
-        "name": "Persian Blue",
-        "hex": "#1C39BB"
+        "name": "Jack and Coke",
+        "hex": "#920F0E"
       },
       {
-        "name": "Dusk Blue",
-        "hex": "#26538D",
-        "approximate": true
+        "name": "Vampiric Council",
+        "hex": "#5C0C0C"
       },
       {
-        "name": "Deep Navy",
-        "hex": "#14213D",
-        "approximate": true
+        "name": "Mimolette Orange",
+        "hex": "#EE8811"
+      },
+      {
+        "name": "Artichoke Heart",
+        "hex": "#E4D588"
       }
     ],
     "roles": {
-      "dark": "#14213D",
-      "light": "#CCEDEA",
-      "soft": "#6C91C5",
-      "strong": "#1C39BB",
-      "mid": "#26538D"
+      "dark": "#0F0B0A",
+      "light": "#E4D588",
+      "soft": "#EE8811",
+      "strong": "#5C0C0C",
+      "mid": "#DD3311",
+      "hero": "#920F0E"
     },
     "available": true,
-    "preview": "/images/themes/blue-hour.svg"
+    "preview": "/images/themes/dynamite-stout.svg"
   },
   {
     "id": "cedar-hearth",
@@ -249,7 +252,8 @@ export const themes: PortfolioTheme[] = [
 export const THEME_STORAGE_KEY = 'geraldo-portfolio-theme'
 
 export function getTheme(id: string | null): PortfolioTheme {
-  return themes.find(theme => theme.id === id && theme.available) ?? themes[0]
+  const currentId = id === 'blue-hour' ? 'dynamite-stout' : id
+  return themes.find(theme => theme.id === currentId && theme.available) ?? themes[0]
 }
 
 export function readSavedTheme(): string {
